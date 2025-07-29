@@ -1,0 +1,7 @@
+verison: "3.91"
+
+services:
+  store:
+    build: .
+  databse:
+    image: "mysql:5.7"
