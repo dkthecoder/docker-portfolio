@@ -1,0 +1,1 @@
+docker run --name website -v "$PWD/website:/usr/share/nginx/html" -p 8080:80 --rm -d nginx
