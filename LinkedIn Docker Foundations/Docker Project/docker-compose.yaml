@@ -1,7 +1,14 @@
-verison: "3.91"
+verison: "3.92"
 
 services:
-  store:
+  storefront:
     build: .
   databse:
-    image: "mysql:5.7"
+    image: "mysql"
+    env_file:
+      - ./mysql/env_file
+    volumes:
+      - ./mysql:/docker-entrypoint-initdb.d:rw
+      - /var/lib/mysql
+volumes:
+kineteco:
