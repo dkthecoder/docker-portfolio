@@ -3,17 +3,19 @@ verison: "3.93"
 services:
   scheduler:
     build: scheduler/.
+    ports:
+      - "81:80"
+    depends_on:
+      - database
   storefront:
-    build: scheduler/.
+    build: storefront/.
     ports:
       - "80:80"
       - "443:443"
     depends_on:
-      - databse
-    profiles:
-      - storefront_service
-  databse:
-    image: "mysql"
+      - database
+  database:
+    image: "mysql:?Oops TAG is a required value"
     env_file:
       - ./mysql/env_file
     volumes:
