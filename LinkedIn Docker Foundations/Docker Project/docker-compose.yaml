@@ -1,14 +1,23 @@
-verison: "3.92"
+verison: "3.93"
 
 services:
+  scheduler:
+    build: scheduler/.
   storefront:
-    build: .
+    build: scheduler/.
+    ports:
+      - "80:80"
+      - "443:443"
+    depends_on:
+      - databse
+    profiles:
+      - storefront_service
   databse:
     image: "mysql"
     env_file:
       - ./mysql/env_file
     volumes:
-      - ./mysql:/docker-entrypoint-initdb.d:rw
-      - /var/lib/mysql
+      - ./mysql:/docker-entrypoint-initdb.d:ro
+      - kineteco:/var/lib/mysql
 volumes:
-kineteco:
+  kineteco: 
